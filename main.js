@@ -22,7 +22,10 @@ function addItemButton(event) {
     event.preventDefault();
     addItemRows();
 }
-
+var addItemsButton = document.getElementById('addItems');
+addItemsButton.onclick = function() {
+    addItemButton(event);
+}
 
 function addNewItem(list, itemText) {
     totalItems++;
