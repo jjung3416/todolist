@@ -1,22 +1,10 @@
-// var btnNew = document.getElementById('btnAdd');
-// btnNew.onclick = addNewItem;
-
-// function addNewItem() {
-//     var listItem = document.createElement('li');
-//     listItem.innerText = "Hello";
-
-//     var list = document.getElementById('todolist');
-//     list.appendChild(listItem);
-
-// }
-
 var totalItems = 0;
 
-function updateItemStatus(){
-    var chId = this.id.replace('cb_','');
+function updateItemStatus() {
+    var chId = this.id.replace('cb_', '');
     var itemText = document.getElementById('item_' + chId);
 
-    if(this.checked) {
+    if (this.checked) {
         itemText.className = 'checked';
     } else {
         itemText.className = '';
@@ -45,11 +33,11 @@ function addNewItem(list, itemText) {
 var inputText = document.getElementById('inputText');
 inputText.focus();
 
-inputText.onkeyup = function(event) {
-    if(event.which === 13){
+inputText.onkeyup = function (event) {
+    if (event.which === 13) {
         var itemText = inputText.value;
         //빈값에 대한 처리
-        if(!itemText || itemText === "" || itemText === " ") {
+        if (!itemText || itemText === "" || itemText === " ") {
             return false;
         }
         addNewItem(document.getElementById('todolist'), itemText);
@@ -57,14 +45,4 @@ inputText.onkeyup = function(event) {
         inputText.select();
     }
 }
-// var btnNew = document.getElementById('btnAdd');
 
-// btnNew.onclick = function(){
-//     var innerText = document.getElementById('inputText');
-//     var itemText = inputText.value;
-
-    
-
-//     addNewItem(document.getElementById('todoList'), itemText);
-    
-// }
