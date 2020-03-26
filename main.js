@@ -11,6 +11,10 @@ function updateItemStatus() {
     }
 }
 
+function reset(){
+    alert("reset");
+}
+
 function addNewItem(list, itemText) {
     totalItems++;
 
