@@ -11,9 +11,18 @@ function updateItemStatus() {
     }
 }
 
-function reset(){
-    alert("reset");
+function addItemButton(event) {
+
+    var itemText = inputText.value;
+    //빈값에 대한 처리
+    if (!itemText || itemText === "" || itemText === " ") {
+        return false;
+    }
+
+    event.preventDefault();
+    addItemRows();
 }
+
 
 function addNewItem(list, itemText) {
     totalItems++;
@@ -34,19 +43,25 @@ function addNewItem(list, itemText) {
 
 }
 
+function addItemRows() {
+    var itemText = inputText.value;
+    //빈값에 대한 처리
+    if (!itemText || itemText === "" || itemText === " ") {
+        return false;
+    }
+    addNewItem(document.getElementById('todolist'), itemText);
+    inputText.focus();
+    inputText.select();
+}
+
+
+
 var inputText = document.getElementById('inputText');
 inputText.focus();
 
 inputText.onkeyup = function (event) {
     if (event.which === 13) {
-        var itemText = inputText.value;
-        //빈값에 대한 처리
-        if (!itemText || itemText === "" || itemText === " ") {
-            return false;
-        }
-        addNewItem(document.getElementById('todolist'), itemText);
-        inputText.focus();
-        inputText.select();
+        addItemRows();
     }
 }
 
