@@ -1,27 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>참고용</title>
+</head>
 <body>
-    <h1>오늘의 할 일</h1>
-    <ul class="itemList">
-        <li>
-            <input type="checkbox" id="item1">
-            <label for="item1">이벤트 버블링 학습</label>
-        </li>
-        <li>
-            <input type="checkbox" id="item2">
-            <label for="item2">이벤트 캡쳐 학습</label>
-        </li>
+    
+    <h1>Todo List</h1>
+    <form id="dataForm" onsubmit="insertNewTodo(event);">
+
+        <fieldset>
+            <legend>taskbox</legend>
+            <label for="inputText">할일</label>
+            <input type="text" id="inputText" name="todo">
+        </fieldset>
+
+        <button type="submit">add one item</button>
+        <button type="reset">reset</button>
+    </form>
+
+    <ul id="todoList">
     </ul>
 
     
     <script>
-        var inputs = document.querySelectorAll('input');
-        inputs.forEach(function(input){
-            input.addEventListener('click', function(event) {
-                alert('clicked');
-            });
-        });
+         function insertNewTodo(e) {
+          e.preventDefault();
+          var formData = new FormData(e.target);
+          var todo = formData.get("todo");
+          var node = document.createElement("li");
+          var checkBox = document.createElement("input");
+          checkBox.type ='checkBox';
 
+          var textNode = document.createTextNode(todo);
+          if(!todo || todo === "" || todo === " ") {
+              alert("hey? check your input box!! ");
+              return;
+          }
+          node.appendChild(checkBox);
+          node.appendChild(textNode);
+          document.querySelector("#todoList").appendChild(node);
+          
+        }
+
+               
 
     </script>
-
+   
 
 </body>
+</html>
