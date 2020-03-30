@@ -31,7 +31,10 @@
           var todo = formData.get("todo");
           var node = document.createElement("li");
           var checkBox = document.createElement("input");
+          var totalcnt = 0;
           checkBox.type ='checkBox';
+          checkBox.id = 'chk_'+ totalcnt;
+          checkBox.onclick = checkAct;
 
           var textNode = document.createTextNode(todo);
           if(!todo || todo === "" || todo === " ") {
@@ -44,6 +47,13 @@
           
         }
 
+        function checkAct() {
+            if (this.checked) {
+
+            } else {
+                
+            }
+        }
                
 
     </script>
