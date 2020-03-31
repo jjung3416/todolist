@@ -6,6 +6,13 @@
     <title>참고용</title>
 </head>
 <body>
+    <style>
+        .del{
+            text-decoration: line-through;
+            color: #c00;
+            font-weight: bold;
+        }
+    </style>
     
     <h1>Todo List</h1>
     <form id="dataForm" onsubmit="insertNewTodo(event);">
@@ -25,19 +32,21 @@
 
     
     <script>
-         function insertNewTodo(e) {
+        var totalcnt = 0;
+        var ul = document.querySelector("ul");
+        ul.addEventListener('click', checkAct);
+        
+        function insertNewTodo(e) {
           e.preventDefault();
           var formData = new FormData(e.target);
           var todo = formData.get("todo");
           var node = document.createElement("li");
           var checkBox = document.createElement("input");
-          var totalcnt = 0;
           checkBox.type ='checkBox';
-          checkBox.id = 'chk_'+ totalcnt;
-          checkBox.onclick = checkAct;
-
+          
+          
           var textNode = document.createTextNode(todo);
-          if(!todo || todo === "" || todo === " ") {
+          if (!todo || todo === "" || todo === " ") {
               alert("hey? check your input box!! ");
               return;
           }
@@ -47,16 +56,14 @@
           
         }
 
-        function checkAct() {
-            if (this.checked) {
-
-            } else {
-                
+        function checkAct(event) {
+            if (event.target.nodeName === 'INPUT') {
+                event.target.parentNode.setAttribute("class", (event.target.checked) ?  "del" : "" ); 
             }
         }
-               
 
     </script>
+
    
 
 </body>

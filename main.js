@@ -3,7 +3,7 @@ var totalItems = 0;
 function updateItemStatus() {
     var chId = this.id.replace('cb_', '');
     var itemText = document.getElementById('item_' + chId);
-
+    
     if (this.checked) {
         itemText.className = 'checked';
     } else {
@@ -34,7 +34,7 @@ function addNewItem(list, itemText) {
     var checkBox = document.createElement('input');
     checkBox.type = 'checkBox';
     checkBox.id = 'cb_' + totalItems;
-    checkBox.onclick = updateItemStatus;
+    checkBox.onclick = updateItemStatus();
 
     var span = document.createElement('span');
     span.id = 'item_' + totalItems;
